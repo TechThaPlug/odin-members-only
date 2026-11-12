@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  username VARCHAR(254) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  is_member BOOLEAN NOT NULL DEFAULT FALSE,
+  is_admin BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_username_unique
+  ON users (lower(username));
+
+CREATE TABLE IF NOT EXISTS messages (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  title VARCHAR(100) NOT NULL,
+  body TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS messages_created_at_idx
+  ON messages (created_at DESC);
+
+CREATE TABLE IF NOT EXISTS session (
+  sid VARCHAR NOT NULL PRIMARY KEY,
+  sess JSON NOT NULL,
+  expire TIMESTAMP(6) NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_session_expire ON session (expire);
