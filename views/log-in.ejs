@@ -1,0 +1,23 @@
+<%- include("partials/header") %>
+
+<h1>Log in</h1>
+
+<% if (messages.length > 0) { %>
+  <div class="errors" role="alert">
+    <p><%= messages[messages.length - 1] %></p>
+  </div>
+<% } %>
+
+<form action="/log-in" method="POST">
+  <label for="username">Email</label>
+  <input id="username" name="username" type="email" required autocomplete="email">
+
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" required autocomplete="current-password">
+
+  <button type="submit">Log in</button>
+</form>
+
+<p>No account yet? <a href="/sign-up">Sign up</a></p>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,36 @@
+<%- include("partials/header") %>
+
+<h1>Sign up</h1>
+
+<% if (errors.length > 0) { %>
+  <div class="errors" role="alert">
+    <ul>
+      <% errors.forEach((error) => { %>
+        <li><%= error %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form action="/sign-up" method="POST">
+  <label for="firstName">First name</label>
+  <input id="firstName" name="firstName" type="text" required maxlength="50" value="<%= values.firstName %>" autocomplete="given-name">
+
+  <label for="lastName">Last name</label>
+  <input id="lastName" name="lastName" type="text" required maxlength="50" value="<%= values.lastName %>" autocomplete="family-name">
+
+  <label for="username">Email</label>
+  <input id="username" name="username" type="email" required maxlength="254" value="<%= values.username %>" autocomplete="email">
+
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" required minlength="8" maxlength="72" autocomplete="new-password">
+
+  <label for="confirmPassword">Confirm password</label>
+  <input id="confirmPassword" name="confirmPassword" type="password" required autocomplete="new-password">
+
+  <button type="submit">Sign up</button>
+</form>
+
+<p>Already have an account? <a href="/log-in">Log in</a></p>
+
+<%- include("partials/footer") %>

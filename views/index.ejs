@@ -1,0 +1,40 @@
+<%- include("partials/header") %>
+
+<h1>The Clubhouse</h1>
+
+<% if (!currentUser) { %>
+  <p class="notice">You are not logged in. <a href="/log-in">Log in</a> or <a href="/sign-up">sign up</a> to post a message.</p>
+<% } else if (currentUser.isAdmin) { %>
+  <p class="notice">Signed in as <strong><%= currentUser.firstName %></strong> (admin). You can see every author and delete messages.</p>
+<% } else if (currentUser.isMember) { %>
+  <p class="notice">Signed in as <strong><%= currentUser.firstName %></strong> (member). You can see every author.</p>
+<% } else { %>
+  <p class="notice">Signed in as <strong><%= currentUser.firstName %></strong>. <a href="/join">Join the club</a> to see who wrote each message.</p>
+<% } %>
+
+<% if (messages.length === 0) { %>
+  <p>No messages yet.</p>
+<% } else { %>
+  <ul class="messages">
+    <% messages.forEach((message) => { %>
+      <li class="message">
+        <h2><%= message.title %></h2>
+        <p class="text"><%= message.body %></p>
+
+        <% if (withAuthors) { %>
+          <p class="meta">by <strong><%= message.author %></strong> on <%= formatDate(message.createdAt) %></p>
+        <% } else { %>
+          <p class="meta">Author hidden. Club members can see who wrote this.</p>
+        <% } %>
+
+        <% if (currentUser && currentUser.isAdmin) { %>
+          <form method="POST" action="/messages/<%= message.id %>/delete" onsubmit="return confirm('Delete this message?');">
+            <button type="submit" class="danger">Delete</button>
+          </form>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<%- include("partials/footer") %>

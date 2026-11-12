@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  color: #1f2937;
+  background-color: #f3f4f6;
+}
+
+a {
+  color: #1d4ed8;
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 20px 56px;
+}
+
+.site-header {
+  background-color: #1f2937;
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 14px 20px;
+}
+
+.site-header a {
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.site-header a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.site-header .brand {
+  margin-right: auto;
+  font-weight: bold;
+  color: white;
+}
+
+.inline {
+  display: inline;
+  margin: 0;
+}
+
+.link-button {
+  padding: 0;
+  font-size: inherit;
+  color: #e5e7eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.notice {
+  padding: 10px 14px;
+  background-color: #dbeafe;
+  border-radius: 6px;
+}
+
+.messages {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.message {
+  padding: 16px;
+  background-color: white;
+  border-left: 5px solid #3882f6;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.message h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+}
+
+.message .text {
+  margin: 0 0 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.message .meta {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+form {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  padding: 10px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+button,
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+  background-color: #3882f6;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button[type="submit"] {
+  justify-self: start;
+}
+
+.danger {
+  background-color: #dc2626;
+}
+
+.errors {
+  margin: 12px 0;
+  padding: 10px 16px;
+  color: #991b1b;
+  background-color: #fee2e2;
+  border-radius: 6px;
+}
+
+.errors ul,
+.errors p {
+  margin: 0;
+  padding-left: 0;
+  list-style-position: inside;
+}

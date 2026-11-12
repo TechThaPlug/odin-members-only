@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | The Clubhouse</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <a class="brand" href="/">The Clubhouse</a>
+      <% if (currentUser) { %>
+        <a href="/messages/new">New message</a>
+        <% if (!currentUser.isMember && !currentUser.isAdmin) { %>
+          <a href="/join">Join the club</a>
+        <% } %>
+        <form method="POST" action="/log-out" class="inline">
+          <button type="submit" class="link-button">Log out</button>
+        </form>
+      <% } else { %>
+        <a href="/log-in">Log in</a>
+        <a href="/sign-up">Sign up</a>
+      <% } %>
+    </nav>
+  </header>
+  <main>
